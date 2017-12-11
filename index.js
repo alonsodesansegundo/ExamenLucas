@@ -1,11 +1,34 @@
+"use strict"
+/**
+ * @file Examen de entornos de desarrollo (11/12/2017)
+ * @author Lucas Alonso 
+ * @version 1.0
+ */
+
+/**
+ * @class Almacen
+ * @property {Number} capacidad Cantidad de elementos (cds o dvds) que puede haber en el almacén
+ * @prop {Array} cds Coleccion de cds que están en el almacen
+ * @prop {Array} dvds Coleccion de dvds que están en el almacén
+ */
 class Almacen {
     //Constructor de la clase almacén, recibe la cantidad de elementos (cds o dvds) que puede haber. 
+
+    /**
+     * @param {Number} capacidad Cantidad de elementos (cds o dvds) que puede haber en el almacén
+     */
     constructor(capacidad) {
         this.capacidad = capacidad;
         this.cds = [];
         this.dvds = [];
     }
     //El método introducir recibe un objeto y si hay sitio, tras comprobar si es de tipo cd o dvd lo mete dentro de la colección (Array) correspondiente. Devuelve 0 si no puede meterlo o en caso contrario el número de unidades introducidas.
+
+    /**
+     * @description El método introducir recibe un objeto y si hay sitio, tras comprobar si es de tipo cd o dvd lo mete dentro de la colección correspondiente. 
+     * @param {Objeto} objeto Objeto (cd o dvd) que queremos introducir en el almacén
+     * @return Devuelve 0 si no puede meterlo o en caso contrario el número de unidades introducidas.
+     */
     introducir(objeto) {
         if (this.capacidad == 0) {
             console.log("almacen lleno")
@@ -37,6 +60,12 @@ class Almacen {
         }
     }
     //Este método recibe una cadena de texto y busca dentro del almacén si existe un cd o dvd con ese título o ese autor, si lo encuentra devulve un objeto con el título, autor, unidades y precio. Si no lo encuentra devuelve null
+
+    /**
+     * @description Este método recibe una cadena de texto y busca dentro del almacén si existe un cd o dvd con ese título o ese autor.
+     * @param {String} tituloautor Cadena de texto que le pasamos al método, ya sea el titulo del cd o dvd, como el nombre de su autor.
+     * @return Si lo encuentra devulve un objeto con el título, autor, unidades y precio, si no lo encuentra devuelve null.
+     */
     buscar(tituloautor) {
         for (let obj of this.cds) {
             if ((tituloautor == obj.titulo) || (tituloautor == obj.autor)) {
@@ -63,7 +92,12 @@ class Almacen {
         return null;
     }
     //El método comprar, recibe una cadena de texto con un título y la cantidad de dinero. Devuelve -1 si no puede comprarlo y la cantidad de dinero que le sobra si lo puede comprar.
-
+/**
+ * @description El método comprar, recibe una cadena de texto con un título y la cantidad de dinero.
+ * @param {String} titulo Título del cd o dvd que queremos comprar
+ * @param {Number} dinero Cantidad de dinero con la que el comprador cuenta
+ * @return Devuelve -1 si no puede comprarlo y la cantidad de dinero que le sobra si lo puede comprar.
+ */
     comprar(titulo, dinero) {
         for (let obj of this.cds) {
             if (titulo == obj.titulo) {
